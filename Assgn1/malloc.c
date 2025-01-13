@@ -168,27 +168,6 @@ int remove_free_blocks(){
 
 
 
-
-
-
-
-    while (current != NULL){
-        if (current->is_free && current->next == NULL){
-            if (prev == NULL){
-                start = NULL;
-            }
-            else{
-                prev->next = NULL;
-            }
-            sbrk(0 - sizeof(header) - current->size);
-            return;
-        }
-        prev = current;
-        current = current->next;
-    }
-
-}
-
 //if ptr is NULL, the function behaves like malloc(size).
 //if size is equal to zero, the function behaves like free(ptr).
 
