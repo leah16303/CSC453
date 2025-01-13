@@ -17,9 +17,8 @@ void *malloc(size_t size){
         return NULL;
     }
 
-    /*check if size fits into a freed block*/
-    /*if find_free_block finds one, it will return the*/
-    /* ptr to that block, else it will return NULL*/
+    /*returns the ptr to a freed block that fits if exists*/
+    /*else it will return NULL*/
     new_block = find_free_block(size);
 
     /*if a free block is found, change block to free*/
@@ -35,8 +34,6 @@ void *malloc(size_t size){
         }
         return allocate_new_block(size);
     }
-
-
 
 }
 
