@@ -1,7 +1,13 @@
-#include <unistd.h>   // For sbrk
-#include <stddef.h>   // For size_t and NULL
-#include <stdint.h>   // For uintptr_t (optional)
-#include <assert.h>   // For debugging assertions (optional)
+#include <unistd.h>   
+#include <stddef.h>   
+#include <stdint.h>   
+#include <assert.h>   
+#include <stdio.h>
+#include <stdlib.h> 
+#include <errno.h>
+#include <string.h>
+
+
 
 /*header holds information for each block */
 typedef struct header{
@@ -17,3 +23,9 @@ void *calloc(size_t nmemb, size_t size);
 void *malloc(size_t size);
 void free(void *ptr);
 void *realloc(void *ptr, size_t size);
+void *find_free_block(size_t size);
+void *allocate_block(size_t block_size);
+int remove_free_blocks();
+int merge_blocks(); 
+size_t align(size_t size);
+void *free_helper(void *ptr);
